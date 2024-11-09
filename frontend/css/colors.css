@@ -1,0 +1,31 @@
+.background-color {
+  background-color: #f5f5f5;
+}
+
+.primary-color {
+  background-color: #00d47e;
+}
+
+.secondary-color {
+  background-color: #025864;
+}
+
+.accent-color {
+  background-color: #2a737d;
+}
+
+.text-color-black {
+  color: black;
+}
+
+.text-color-white {
+  color: white;
+}
+
+.text-color-green {
+  color: green;
+}
+
+.text-color-red {
+  color: red;
+}
