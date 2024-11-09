@@ -10,15 +10,13 @@ if (!isset($transactionId)) {
   exit;
 }
 
-$transactionsQuery = $connection->prepare("SELECT * FROM transactions WHERE users_id = ? and id = ?");
+$transactionsQuery = $connection->prepare("DELETE FROM transactions WHERE users_id = ? and id = ?");
 $transactionsQuery->bind_param("ii", $userId, $transactionId);
 $transactionsQuery->execute();
 
-$result = $transactionsQuery->get_result();
-
-if ($result->num_rows === 0) {
+if ($transactionsQuery->affected_rows === 0) {
   echo json_encode(["status" => "fail", "message" => "transaction not found"]);
   exit;
 }
 
-echo json_encode(["status" => "success", "message" => "found the user", "transaction" => $transactions]);
+echo json_encode(["status" => "success", "message" => "successfully delete the transaction"]);
