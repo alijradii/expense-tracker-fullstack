@@ -28,7 +28,7 @@ const initAddTransactionButton = (dataArray, renderTransactions) => {
 
     axios({
       method: "post",
-      url: `http://localhost/expenseTracker/backend/api/addTransaction.php?id=${userId}`,
+      url: `http://localhost/expenseTracker/backend/api/createTransaction.php?id=${userId}`,
       data: new URLSearchParams({
         password,
         amount,

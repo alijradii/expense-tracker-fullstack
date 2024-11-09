@@ -1,7 +1,8 @@
-const loadTransactions = (id, password) => {
+const deleteTransaction = (id, element) => {
   axios({
     method: "post",
-    url: `http://localhost/expenseTracker/backend/api/getTransactions.php?id=${id}`,
+    url: `http://localhost/expenseTracker/backend/api/deleteTransaction.php?id=${userId}&transaction_id=${id}`,
+
     data: new URLSearchParams({
       password: password,
     }),
@@ -10,14 +11,12 @@ const loadTransactions = (id, password) => {
     },
   })
     .then((response) => {
-      console.log(response.data);
-      transactions = response.data.transactions;
-      displayTransactions();
+      console.log("success");
+      console.log(response);
+      element.remove();
     })
     .catch((error) => {
       console.error("Error:", error);
       alert("An error occurred. Please try again.");
     });
 };
-
-loadTransactions(userId, password);
