@@ -6,6 +6,12 @@ include __DIR__ . '/../helpers/verifyUser.php';
 $transactionAmount = $_POST["amount"];
 $transactionType = $_POST["type"];
 $transactionDate = $_POST["date"];
+$transactionNote = $_POST["note"];
+
+if (!isset($transactionAmount) || !isset($transactionDate) || isset($transactionType) || !isset($transactionNote)) {
+  echo json_encode(["status" => "fail", "message" => "invalid input"]);
+  exit;
+}
 
 $insert_query = $connection->prepare("INSERT INTO transactions (amount, type, date, users_id) values (?, ?, ?, ?)");
 $insert_query->bind_param("issi", $transactionAmount, $transactionType, $transactionDate, $userId);
