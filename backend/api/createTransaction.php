@@ -1,0 +1,21 @@
+<?php
+
+include __DIR__ . '/../database/connection.php';
+include __DIR__ . '/../helpers/verifyUser.php';
+
+$transactionAmount = $_POST["amount"];
+$transactionType = $_POST["type"];
+$transactionDate = $_POST["date"];
+
+$insert_query = $connection->prepare("INSERT INTO transactions (amount, type, date, users_id) values (?, ?, ?, ?)");
+$insert_query->bind_param("issi", $transactionAmount, $transactionType, $transactionDate, $userId);
+
+$insert_query->execute();
+
+if ($insert_query->affected_rows === 0) {
+  echo json_encode(["status" => "fail", "message" => "failed to create transaction"]);
+  exit;
+}
+
+
+echo json_encode(["status" => "success", "message" => "successfully created transaction"]);
