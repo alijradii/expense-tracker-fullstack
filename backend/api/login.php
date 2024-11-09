@@ -21,10 +21,10 @@ if ($password && $email) {
     if (!$verifyPassword) {
       echo json_encode(["status" => "fail", "message" => "wrong password", "user_id" => $userId]);
     } else {
-      echo json_encode(["status" => "success", "message" => "Logged in successfully.", "user_id" => $userId]);
+      echo json_encode(["status" => "success", "message" => "logged in successfully", "user_id" => $userId]);
     }
   } else {
-    echo json_encode(["status" => "fail", "message" => "Email not found"]);
+    echo json_encode(["status" => "fail", "message" => "email not found"]);
   }
 } else {
   echo json_encode(["status" => "fail", "message" => "invalid input"]);

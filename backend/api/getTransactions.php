@@ -21,4 +21,11 @@ if ($checkUserResult->num_rows === 0) {
   exit;
 }
 
+$hashedPassword = $user["password"];
+$verifyPassword = password_verify($password, $user["password"]);
+
+if (!$verifyPassword) {
+  echo json_encode(["status" => "fail", "message" => "invalid password"]);
+}
+
 echo json_encode(["status" => "success", "message" => "found the user"]);
