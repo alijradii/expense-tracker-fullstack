@@ -2,7 +2,6 @@ const initAddTransactionButton = (dataArray, renderTransactions) => {
   const button = document.getElementById("add-transaction-button");
 
   button.addEventListener("click", () => {
-    console.log("clicked");
     const noteInput = document.getElementById("transaction-note");
     const dateInput = document.getElementById("transaction-date");
     const amountInput = document.getElementById("transaction-amount");
@@ -33,7 +32,7 @@ const initAddTransactionButton = (dataArray, renderTransactions) => {
         password,
         amount,
         type,
-        date,
+        date: formattedDate,
         note,
       }),
       headers: {
@@ -41,6 +40,7 @@ const initAddTransactionButton = (dataArray, renderTransactions) => {
       },
     })
       .then((response) => {
+        console.log(response.data);
         loadTransactions(userId, password);
         displayTransactions();
       })
