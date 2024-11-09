@@ -10,3 +10,7 @@ $connection = new mysqli($host, $dbuser, $pass, $dbname);
 if ($connection->connect_error) {
   die("Error happened");
 }
+
+header("Access-Control-Allow-Origin");
+header("Access-Control-Allow-Header: Content-Type");
+header("Access-Control-Allow-Methods: GET, POST");
