@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <title></title>
+    <link href="../css/colors.css" rel="stylesheet" />
+    <link href="../css/utils.css" rel="stylesheet" />
+    <link href="../css/home.css" rel="stylesheet" />
+    <link href="../css/filter-popup.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="secondary-color">
+      <div class="header-text">
+        <h3>Total Balance</h3>
+        <h1 id="total-budget">$320,450</h1>
+      </div>
+    </header>
+
+    <section>
+      <div class="transactions-container grow1">
+        <div class="transaction-creator">
+          <h3>Add Transaction</h3>
+          <div class="toggle-container">
+            <button id="expense-button" class="active">Expense</button>
+            <button id="income-button">Income</button>
+          </div>
+
+          <input
+            type="text"
+            placeholder="Note"
+            class="transaction-note"
+            id="transaction-note"
+          />
+          <input type="date" class="transaction-date" id="transaction-date" />
+          <input
+            type="number"
+            placeholder="Amount"
+            class="transaction-amount"
+            id="transaction-amount"
+          />
+          <button class="add-transaction-button" id="add-transaction-button">
+            Add Transaction
+          </button>
+        </div>
+      </div>
+      <div class="transactions-container grow2">
+        <div class="transactions-header">
+          <h3>Transactions</h3>
+          <div class="flex align-stretch gap10">
+            <button id="filter-button">
+              <i class="fa fa-filter" id="filter-button"></i>
+              Filter
+            </button>
+            <button id="remove-button">
+              <i class="fa fa-x"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="transactions-list" id="transactions-list"></div>
+      </div>
+    </section>
+
+    <div class="popup-overlay hidden" id="popup-overlay">
+      <div class="popup-content" id="popup-content">
+        <span class="close-btn" id="close-popup-button">
+          <i class="fa fa-x"></i>
+        </span>
+        <h2>Filter Transactions</h2>
+
+        <label for="filterDate">Date:</label>
+        <input type="date" id="filterDate" name="filterDate" />
+
+        <label for="filterNote">Note:</label>
+        <input
+          type="text"
+          id="filterNote"
+          name="filterNote"
+          placeholder="Enter note"
+        />
+
+        <label for="minAmount">Min Amount:</label>
+        <input
+          type="number"
+          id="minAmount"
+          name="minAmount"
+          placeholder="Min"
+        />
+
+        <label for="maxAmount">Max Amount:</label>
+        <input
+          type="number"
+          id="maxAmount"
+          name="maxAmount"
+          placeholder="Max"
+        />
+
+        <label for="transactionType">Type:</label>
+        <select id="transactionType" name="transactionType">
+          <option value="">All</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+
+        <button id="applyFilter" class="apply-btn">Apply Filters</button>
+      </div>
+    </div>
+
+    <script src="../src/"></script>
+  </body>
+</html>
