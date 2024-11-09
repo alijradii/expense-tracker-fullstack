@@ -1,5 +1,6 @@
-let removeActive = false;
 let transactions = [];
+let isExpense = true;
+let removeActive = false;
 
 const displayTransactions = () => {
   const transactionsList = document.getElementById("transactions-list");
