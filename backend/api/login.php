@@ -14,7 +14,6 @@ if ($password && $email) {
   if ($checkResult->num_rows > 0) {
     $user = $checkResult->fetch_assoc();
     $userId = $user["id"];
-    $hashedPassword = $user["password"];
 
     $verifyPassword = password_verify($password, $user["password"]);
 
