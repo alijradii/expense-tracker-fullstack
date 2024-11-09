@@ -22,8 +22,14 @@ if ($username && $password && $email) {
     $insertQuery->bind_param("sss", $email, $username, $hashedPassword);
 
 
-    if ($insertQuery->execute()) {
-      echo json_encode(["status" => "success", "message" => "User registered successfully"]);
+    if ($insertQuery->execute() && $insertQuery->affected_rows > 0) {
+      $userId = $connection->insert_id;
+
+      echo json_encode([
+        "status" => "success",
+        "message" => "User registered successfully",
+        "user_id" => $userId
+      ]);
     } else {
       echo json_encode(["status" => "fail", "message" => "Failed to register user"]);
     }
