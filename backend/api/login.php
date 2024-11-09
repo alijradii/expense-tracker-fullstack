@@ -14,7 +14,15 @@ if ($password && $email) {
   if ($checkResult->num_rows > 0) {
     $user = $checkResult->fetch_assoc();
     $userId = $user["id"];
-    echo json_encode(["status" => "success", "message" => "Logged in successfully", "user_id" => $userId]);
+    $hashedPassword = $user["password"];
+
+    $verifyPassword = password_verify($password, $user["password"]);
+
+    if (!$verifyPassword) {
+      echo json_encode(["status" => "fail", "message" => "wrong password", "user_id" => $userId]);
+    } else {
+      echo json_encode(["status" => "success", "message" => "Logged in successfully.", "user_id" => $userId]);
+    }
   } else {
     echo json_encode(["status" => "fail", "message" => "Email not found"]);
   }
