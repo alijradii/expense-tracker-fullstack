@@ -15,4 +15,4 @@ while ($rows--) {
   $transactions[] = $result->fetch_assoc();
 }
 
-echo json_encode(["status" => "success", "message" => "found the user", "transaction" => $transactions]);
+echo json_encode(["status" => "success", "message" => "found the user", "transactions" => $transactions]);
